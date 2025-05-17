@@ -15,7 +15,6 @@
 
 ### Before you run the app, make sure to set up your .env file.
 
-
 1. Run the app `python -m flask run`
 2. Run a specific unit test: `python -m unittest tests.[filename minus .py]`
 3. Run all unit tests: `python -m unittest discover -s tests`
