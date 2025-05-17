@@ -1,5 +1,5 @@
 import pymysql
-from src.db import get_connection
+from src.util.db import get_connection
 
 def main():
     # Get a connection to the database
