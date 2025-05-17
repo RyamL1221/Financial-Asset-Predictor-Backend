@@ -19,4 +19,7 @@
 2. Run a specific unit test: `python -m unittest tests.[filename minus .py]`
 3. Run all unit tests: `python -m unittest discover -s tests`
 
-`$env:PYTHONPATH = "."`
+## Running Database Scripts
+
+1. Run time ONE TIME only: `$env:PYTHONPATH = "."`
+2. To run scripts:`python -m src.scripts.[filename minus .py]`
