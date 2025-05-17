@@ -1,5 +1,7 @@
 # Financial Asset Predictor Backend
 
+## Make sure to have Python and Git Installed
+
 ## Cloning the Repository:
 
 `git clone https://github.com/RyamL1221/The-Game-Counter-Backend`
