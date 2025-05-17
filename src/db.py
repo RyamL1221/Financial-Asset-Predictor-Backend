@@ -2,12 +2,14 @@ import pymysql
 from dotenv import load_dotenv
 import os
 
+# Load environment variables from .env file
+load_dotenv()
+
 def get_connection():
     """
     Returns a connection to the MySQL database.
     """
-    # Load environment variables from .env file
-    load_dotenv()
+    
 
     # Set the timeout for the connection
     timeout = 10
@@ -19,6 +21,7 @@ def get_connection():
     MYSQL_PORT = int(os.getenv("MYSQL_PORT"))
     MYSQL_USERNAME = os.getenv("MYSQL_USERNAME")
 
+    # Create a connection to the MySQL database
     connection = pymysql.connect(
         charset="utf8mb4",
         connect_timeout=timeout,
