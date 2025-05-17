@@ -11,16 +11,19 @@ get_stock_ticker_bp = Blueprint("get_stock_ticker", __name__)
 @get_stock_ticker_bp.route('/get-stock-ticker/<string:stock_ticker>', methods=['GET'])
 def get_stock_ticker(stock_ticker):
     stock_ticker = stock_ticker.upper()
-    url = BASE_API_URL + ENDPOINTS["GET_TICKER"]
+    url = BASE_API_URL + ENDPOINTS["MACD"]
     API_KEY = os.getenv("POLYGON_API_KEY")
     headers = {
         "Authorization": f"Bearer {API_KEY}"
     }
+    url += f"/{stock_ticker}"
+    """
     params = {
-        "ticker": stock_ticker
+        "stockTicker": stock_ticker
     }
+    """
     try:
-        resp = requests.get(url, headers=headers, params=params, timeout=5)
+        resp = requests.get(url, headers=headers, timeout=5)
         resp.raise_for_status()  # HTTPError on bad status
         data = resp.json()
     except requests.exceptions.HTTPError as http_err:
