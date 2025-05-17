@@ -23,5 +23,5 @@
 
 ## Running Database Scripts
 
-1. Run time ONE TIME only: `$env:PYTHONPATH = "."`
+1. Run this command ONE TIME only: `$env:PYTHONPATH = "."`
 2. To run scripts:`python -m src.scripts.[filename minus .py]`
