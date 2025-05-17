@@ -32,9 +32,14 @@ def get_stock_ticker(stock_ticker):
         msg = f"Invalid JSON response: {json_err}"
         return make_response(jsonify({"error": msg}), 502)
 
-    # aggregate both payloads under separate keys
+    # extract just the `values` lists
+    macd_values = macd_data.get("results", {}).get("values", [])
+    rsi_values  = rsi_data.get("results", {}).get("values", [])
+    
+    # Above 80 is overbought, below 30 is oversold for RSI
+    # Unix Msec Time for timestamp
     return jsonify({
         "ticker": stock_ticker,
-        "macd": macd_data,
-        "rsi":  rsi_data
+        "macd": macd_values,
+        "rsi":  rsi_values
     }), 200
