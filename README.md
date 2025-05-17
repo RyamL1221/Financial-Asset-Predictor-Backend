@@ -10,3 +10,9 @@
 2. Prepare the virtual environment: `venv\Scripts\activate.bat`
 3. Activate the virtual environment: `venv\Scripts\Activate.ps1`
 4. Use pip like usual: `pip install -r requirements.txt`
+
+## Running the App
+
+1. Run the app `python -m flask run`
+2. Run a specific unit test: `python -m unittest tests.[filename minus .py]`
+3. Run all unit tests: `python -m unittest discover -s tests`
