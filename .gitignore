@@ -6,3 +6,5 @@ venv/
 
 # ignore the .env file in the root
 /.env
+
+.pytest_cache/
