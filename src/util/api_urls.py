@@ -8,3 +8,7 @@ FINNHUB_BASE_API_URL = "https://finnhub.io/api/v1"
 FINNHUB_ENDPOINTS = {
     "COMPANY_PROFILE2": "/stock/profile2",
 }
+TWELVE_DATA_BASE_API_URL = "https://api.twelvedata.com"
+TWELVE_DATA_ENDPOINTS = {
+    "BOLLINGER_BANDS": "/bbands"
+}
