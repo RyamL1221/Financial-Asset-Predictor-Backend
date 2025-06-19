@@ -25,3 +25,9 @@
 
 1. Run this command ONE TIME only: `$env:PYTHONPATH = "."`
 2. To run scripts:`python -m src.scripts.[filename minus .py]`
+
+## Adding new feature
+
+1. Create a new branch and switch to it `git checkout -b feature/{new_feature_name}
+2. Develop the feature, and add it to codebase with `git add *`, `git commit -m "{message}"`, and `git push`
+3. After finishing the feature, create a pull request to merge with the **dev** branch
