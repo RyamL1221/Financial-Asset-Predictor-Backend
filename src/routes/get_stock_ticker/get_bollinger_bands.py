@@ -7,7 +7,9 @@ def get_bollinger_bands(stock_ticker):
 
     # Twelve Data API setup
     twelve_data_api_key = os.getenv("TWELVE_DATA_API_KEY")
-    api_url = TWELVE_DATA_BASE_API_URL + TWELVE_DATA_ENDPOINTS["BOLLINGER_BANDS"]
+    interval = "1day"
+    adjust = "all"
+    api_url = TWELVE_DATA_BASE_API_URL + TWELVE_DATA_ENDPOINTS["BOLLINGER_BANDS"] + "?" + "symbol=" + stock_ticker + "&interval=" + interval + "&adjust=" + adjust
     headers = {"Authorization": f"apikey {twelve_data_api_key}"}
 
     # Fetch Bollinger Bands data from Twelve Data API
