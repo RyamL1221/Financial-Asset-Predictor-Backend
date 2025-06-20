@@ -31,6 +31,4 @@ def get_bollinger_bands(stock_ticker):
     # extract just the `values` lists
     bollinger_bands_values = data.get("values", [])   
 
-    # Above 80 is overbought, below 30 is oversold for RSI
-    # Unix Msec Time for timestamp
     return bollinger_bands_values
