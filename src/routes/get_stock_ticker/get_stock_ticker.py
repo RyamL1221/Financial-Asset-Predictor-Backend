@@ -3,6 +3,7 @@ from src.routes.get_stock_ticker.get_macd import get_macd
 from src.routes.get_stock_ticker.get_rsi import get_rsi
 from src.routes.get_stock_ticker.get_profile import get_profile
 from src.routes.get_stock_ticker.get_bollinger_bands import get_bollinger_bands
+from src.routes.get_stock_ticker.get_eps import get_eps
 
 get_stock_ticker_bp = Blueprint("get_stock_ticker", __name__)
 
@@ -14,8 +15,10 @@ def get_stock_ticker(stock_ticker):
     rsi_values = get_rsi(stock_ticker)
     bollinger_band_values = get_bollinger_bands(stock_ticker)
     profile = get_profile(stock_ticker)
+    eps = get_eps(stock_ticker)
    
     return jsonify({
+        "eps":              eps,
         "ticker":           stock_ticker,
         "macd":             macd_values,
         "rsi":              rsi_values,
