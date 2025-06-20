@@ -5,6 +5,7 @@ from src.routes.get_stock_ticker.get_profile import get_profile
 from src.routes.get_stock_ticker.get_bollinger_bands import get_bollinger_bands
 from src.routes.get_stock_ticker.get_eps import get_eps
 from src.routes.get_stock_ticker.get_beta import get_beta
+from src.routes.get_stock_ticker.get_ey import get_ey
 
 get_stock_ticker_bp = Blueprint("get_stock_ticker", __name__)
 
@@ -18,6 +19,7 @@ def get_stock_ticker(stock_ticker):
     profile = get_profile(stock_ticker)
     eps = get_eps(stock_ticker)
     beta = get_beta(stock_ticker)
+    ey = get_ey(stock_ticker, eps)
    
     return jsonify({
         "eps":              eps,
@@ -26,6 +28,7 @@ def get_stock_ticker(stock_ticker):
         "rsi":              rsi_values,
         "bollinger_bands":  bollinger_band_values,
         "beta":             beta,
+        "ey":               ey,
         "country":          profile.get("country"),
         "name":             profile.get("name"),
         "shareOutstanding": profile.get("shareOutstanding"),
