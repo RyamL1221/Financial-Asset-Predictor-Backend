@@ -3,7 +3,6 @@ from src.util.api_urls import TWELVE_DATA_BASE_API_URL, TWELVE_DATA_ENDPOINTS
 import os, requests
 
 def get_bollinger_bands(stock_ticker):
-    stock_ticker = stock_ticker.upper()
 
     # Twelve Data API setup
     twelve_data_api_key = os.getenv("TWELVE_DATA_API_KEY")
