@@ -3,7 +3,6 @@ from src.util.api_urls import POLYGON_BASE_API_URL, POLYGON_ENDPOINTS, FINNHUB_B
 import os, requests
 
 def get_macd(stock_ticker):
-    stock_ticker = stock_ticker.upper()
 
     # Polygon API setup
     polygon_api_key = os.getenv("POLYGON_API_KEY")

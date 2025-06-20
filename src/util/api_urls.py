@@ -10,5 +10,7 @@ FINNHUB_ENDPOINTS = {
 }
 TWELVE_DATA_BASE_API_URL = "https://api.twelvedata.com"
 TWELVE_DATA_ENDPOINTS = {
-    "BOLLINGER_BANDS": "/bbands"
+    "BOLLINGER_BANDS": "/bbands",
+    "BETA": "/beta",
+    "PRICE": "/price",
 }
