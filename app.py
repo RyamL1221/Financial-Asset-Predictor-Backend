@@ -5,6 +5,7 @@ from flask import Flask
 from flask_cors import CORS
 from src.routes.default import default_bp
 from src.routes.get_stock_ticker.get_stock_ticker import get_stock_ticker_bp
+from src.routes.register.register import register_bp
 
 def create_app():
     app = Flask(__name__)
@@ -13,6 +14,7 @@ def create_app():
     # Register blueprints
     app.register_blueprint(default_bp)
     app.register_blueprint(get_stock_ticker_bp)
+    app.register_blueprint(register_bp)
 
     return app
 
