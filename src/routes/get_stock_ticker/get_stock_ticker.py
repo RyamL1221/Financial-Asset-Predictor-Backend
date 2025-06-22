@@ -3,6 +3,7 @@ from src.routes.get_stock_ticker.get_macd import get_macd
 from src.routes.get_stock_ticker.get_rsi import get_rsi
 from src.routes.get_stock_ticker.get_profile import get_profile
 from src.routes.get_stock_ticker.get_bollinger_bands import get_bollinger_bands
+from src.routes.get_stock_ticker.get_roic import get_roic
 from src.routes.get_stock_ticker.get_eps import get_eps
 from src.routes.get_stock_ticker.get_beta import get_beta
 from src.routes.get_stock_ticker.get_ey import get_ey
@@ -17,6 +18,7 @@ def get_stock_ticker(stock_ticker):
     rsi_values = get_rsi(stock_ticker)
     bollinger_band_values = get_bollinger_bands(stock_ticker)
     profile = get_profile(stock_ticker)
+    roic = get_roic(stock_ticker)
     eps = get_eps(stock_ticker)
     beta = get_beta(stock_ticker)
     ey = get_ey(stock_ticker, eps)
@@ -26,6 +28,7 @@ def get_stock_ticker(stock_ticker):
         "ticker":           stock_ticker,
         "macd":             macd_values,
         "rsi":              rsi_values,
+        "roic":             roic,
         "bollinger_bands":  bollinger_band_values,
         "beta":             beta,
         "ey":               ey,

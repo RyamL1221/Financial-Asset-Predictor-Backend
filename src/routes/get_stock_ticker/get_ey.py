@@ -26,6 +26,7 @@ def get_ey(stock_ticker, eps):
         return make_response(jsonify({"error": msg}), 502)
 
     price = data.get('price', 0)
+    price = float(price)
     current_eps = eps.get('current', None).get('0y', 0)
     if price == 0 or current_eps == 0:
         return make_response(jsonify({"error": "Price or EPS data is not available"}), 502)
