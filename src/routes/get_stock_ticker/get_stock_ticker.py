@@ -1,7 +1,4 @@
 from flask import Blueprint, jsonify, Response
-from typing import List, Dict, Any, Optional, Literal
-import math
-from datetime import datetime
 
 from src.routes.get_stock_ticker.getters import (
     get_macd, get_rsi, get_profile, get_bollinger_bands, 
