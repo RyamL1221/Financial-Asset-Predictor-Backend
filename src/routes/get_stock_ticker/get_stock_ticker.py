@@ -44,16 +44,11 @@ def get_stock_ticker(stock_ticker):
         if isinstance(ey, Response):
             return ey
         
-        # Extract values for analysis - the getters return arrays directly
-        macd_values = macd if isinstance(macd, list) else []
-        rsi_values = rsi if isinstance(rsi, list) else []
-        bollinger_values = bollinger_bands if isinstance(bollinger_bands, list) else []
-        
         # Perform technical analysis
         analysis = perform_stock_analysis(
-            macd_values=macd_values,
-            rsi_values=rsi_values,
-            bollinger_band_values=bollinger_values,
+            macd_values=macd,
+            rsi_values=rsi,
+            bollinger_band_values=bollinger_bands,
             eps=eps
         )
         
