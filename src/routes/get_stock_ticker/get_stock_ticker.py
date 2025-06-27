@@ -68,4 +68,6 @@ def get_stock_ticker(stock_ticker):
         return jsonify(response)
         
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        print(e)
+        msg = "Error fetching stock data"
+        return jsonify({"error": msg}), 500
