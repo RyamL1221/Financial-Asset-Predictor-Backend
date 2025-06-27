@@ -28,14 +28,20 @@ def perform_stock_analysis(macd_values: List[Dict[str, Any]],
         if current_eps and next_year_eps and current_eps != 0:
             eps_growth = ((next_year_eps - current_eps) / current_eps) * 100
     
-    # Prepare analysis response
+    # Prepare analysis response with clear overall recommendation structure
     analysis_response = {
+        "overall_recommendation": {
+            "confidence": current_recommendation.get("confidence", 0),
+            "recommendation_type": current_recommendation.get("type", "HOLD"),
+            "description": current_recommendation.get("description", ""),
+            "reasoning": current_recommendation.get("reasoning", []),
+            "technical_factors": current_recommendation.get("technical_factors", [])
+        },
         "eps_analysis": {
             "current": current_eps,
             "growth_percentage": eps_growth
         },
         "macd_signals": macd_signals,
-        "current_recommendation": current_recommendation,
         "technical_analysis": technical_analysis,
         "recommendation_scale": [
             {
