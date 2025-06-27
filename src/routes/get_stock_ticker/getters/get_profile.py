@@ -12,7 +12,7 @@ def get_profile(stock_ticker):
     )
     finnhub_headers = {"X-Finnhub-Token": finnhub_api_key}
 
-    # Fetch MACD data from Polygon API
+    # Fetch profile data from Finnhub API
     try:
         profile_resp = requests.get(
             finnhub_url,
@@ -20,14 +20,8 @@ def get_profile(stock_ticker):
         )
         profile_resp.raise_for_status()
         profile = profile_resp.json()
-    except requests.exceptions.HTTPError as http_err:
-        msg = f"Finnhub API returned {http_err.response.status_code}: {http_err}"
-        return make_response(jsonify({"error": msg}), http_err.response.status_code)
-    except requests.exceptions.RequestException as req_err:
-        msg = f"Error fetching data from Finnhub API: {req_err}"
-        return make_response(jsonify({"error": msg}), 502)
-    except ValueError as json_err:
-        msg = f"Invalid JSON response: {json_err}"
-        return make_response(jsonify({"error": msg}), 502)
+    except Exception:
+        msg = f"Error fetching profile data"
+        return make_response(jsonify({"error": msg}), 500)
 
     return profile

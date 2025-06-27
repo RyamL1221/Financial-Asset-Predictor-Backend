@@ -15,15 +15,9 @@ def get_ey(stock_ticker, eps):
         resp.raise_for_status()
         data = resp.json()
 
-    except requests.exceptions.HTTPError as http_err:
-        msg = f"Twelve Data API returned {http_err.response.status_code}: {http_err}"
-        return make_response(jsonify({"error": msg}), http_err.response.status_code)
-    except requests.exceptions.RequestException as req_err:
-        msg = f"Error fetching data from Twelve Data API: {req_err}"
-        return make_response(jsonify({"error": msg}), 502)
-    except ValueError as json_err:
-        msg = f"Invalid JSON response: {json_err}"
-        return make_response(jsonify({"error": msg}), 502)
+    except Exception:
+        msg = "Error fetching Earnings Yield data"
+        return make_response(jsonify({"error": msg}), 500)
 
     price = data.get('price', 0)
     price = float(price)
