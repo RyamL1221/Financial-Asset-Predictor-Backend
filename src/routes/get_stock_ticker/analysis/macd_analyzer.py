@@ -104,7 +104,6 @@ def analyze_macd_signals(macd_entries: List[Dict[str, Any]]) -> List[Dict[str, A
             technical_factors = get_technical_factors(current, 'BUY')
             
             signals.append({
-                'date': datetime.fromtimestamp(current.get('timestamp', 0) / 1000).strftime('%Y-%m-%d'),
                 'type': signal_type,
                 'description': get_signal_description(signal_type),
                 'confidence': confidence,
@@ -122,7 +121,6 @@ def analyze_macd_signals(macd_entries: List[Dict[str, Any]]) -> List[Dict[str, A
             technical_factors = get_technical_factors(current, 'SELL')
             
             signals.append({
-                'date': datetime.fromtimestamp(current.get('timestamp', 0) / 1000).strftime('%Y-%m-%d'),
                 'type': signal_type,
                 'description': get_signal_description(signal_type),
                 'confidence': confidence,
