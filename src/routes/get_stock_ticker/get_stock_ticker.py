@@ -7,7 +7,7 @@ from src.routes.get_stock_ticker.getters import (
     get_macd, get_rsi, get_profile, get_bollinger_bands, 
     get_roic, get_eps, get_beta, get_ey
 )
-from src.routes.get_stock_ticker.stock_analysis import perform_stock_analysis
+from src.routes.get_stock_ticker.analysis import perform_stock_analysis
 
 get_stock_ticker_bp = Blueprint("get_stock_ticker", __name__)
 
