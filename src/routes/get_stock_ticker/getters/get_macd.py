@@ -15,15 +15,9 @@ def get_macd(stock_ticker):
         macd_resp.raise_for_status()
         macd_data = macd_resp.json()
 
-    except requests.exceptions.HTTPError as http_err:
-        msg = f"Polygon API returned {http_err.response.status_code}: {http_err}"
-        return make_response(jsonify({"error": msg}), http_err.response.status_code)
-    except requests.exceptions.RequestException as req_err:
-        msg = f"Error fetching data from Polygon API: {req_err}"
-        return make_response(jsonify({"error": msg}), 502)
-    except ValueError as json_err:
-        msg = f"Invalid JSON response: {json_err}"
-        return make_response(jsonify({"error": msg}), 502)
+    except Exception:
+        msg = "Error fetching MACD data"
+        return make_response(jsonify({"error": msg}), 500)
 
     # extract just the `values` lists
     macd_values = macd_data.get("results", {}).get("values", [])

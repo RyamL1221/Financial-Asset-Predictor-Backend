@@ -16,16 +16,9 @@ def get_bollinger_bands(stock_ticker):
         resp = requests.get(api_url, headers=headers, timeout=5)
         resp.raise_for_status()
         data = resp.json()
-
-    except requests.exceptions.HTTPError as http_err:
-        msg = f"Twelve Data API returned {http_err.response.status_code}: {http_err}"
-        return make_response(jsonify({"error": msg}), http_err.response.status_code)
-    except requests.exceptions.RequestException as req_err:
-        msg = f"Error fetching data from Twelve Data API: {req_err}"
-        return make_response(jsonify({"error": msg}), 502)
-    except ValueError as json_err:
-        msg = f"Invalid JSON response: {json_err}"
-        return make_response(jsonify({"error": msg}), 502)
+    except Exception:
+        msg = "Error fetching Bollinger Bands data"
+        return make_response(jsonify({"error": msg}), 500)
 
     # extract just the `values` lists
     bollinger_bands_values = data.get("values", [])   

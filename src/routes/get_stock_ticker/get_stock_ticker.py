@@ -1,13 +1,9 @@
 from flask import Blueprint, jsonify, Response
-from typing import List, Dict, Any, Optional, Literal
-import math
-from datetime import datetime
-
 from src.routes.get_stock_ticker.getters import (
     get_macd, get_rsi, get_profile, get_bollinger_bands, 
     get_roic, get_eps, get_beta, get_ey
 )
-from src.routes.get_stock_ticker.stock_analysis import perform_stock_analysis
+from src.routes.get_stock_ticker.analysis import perform_stock_analysis
 
 get_stock_ticker_bp = Blueprint("get_stock_ticker", __name__)
 
@@ -43,28 +39,16 @@ def get_stock_ticker(stock_ticker):
         eps = get_eps(stock_ticker)
         beta = get_beta(stock_ticker)
         
-        # Check if any data fetching returned an error response
-        for data_name, data in [("profile", profile), ("macd", macd), ("rsi", rsi), 
-                               ("bollinger_bands", bollinger_bands), ("roic", roic), 
-                               ("eps", eps), ("beta", beta)]:
-            if isinstance(data, Response):
-                return data
-        
         # Get earnings yield (requires EPS data)
         ey = get_ey(stock_ticker, eps) if eps else None
         if isinstance(ey, Response):
             return ey
         
-        # Extract values for analysis - the getters return arrays directly
-        macd_values = macd if isinstance(macd, list) else []
-        rsi_values = rsi if isinstance(rsi, list) else []
-        bollinger_values = bollinger_bands if isinstance(bollinger_bands, list) else []
-        
         # Perform technical analysis
         analysis = perform_stock_analysis(
-            macd_values=macd_values,
-            rsi_values=rsi_values,
-            bollinger_band_values=bollinger_values,
+            macd_values=macd,
+            rsi_values=rsi,
+            bollinger_band_values=bollinger_bands,
             eps=eps
         )
         
@@ -84,4 +68,6 @@ def get_stock_ticker(stock_ticker):
         return jsonify(response)
         
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        print(e)
+        msg = "Error fetching stock data"
+        return jsonify({"error": msg}), 500
