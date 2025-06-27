@@ -39,13 +39,6 @@ def get_stock_ticker(stock_ticker):
         eps = get_eps(stock_ticker)
         beta = get_beta(stock_ticker)
         
-        # Check if any data fetching returned an error response
-        for data_name, data in [("profile", profile), ("macd", macd), ("rsi", rsi), 
-                               ("bollinger_bands", bollinger_bands), ("roic", roic), 
-                               ("eps", eps), ("beta", beta)]:
-            if isinstance(data, Response):
-                return data
-        
         # Get earnings yield (requires EPS data)
         ey = get_ey(stock_ticker, eps) if eps else None
         if isinstance(ey, Response):
