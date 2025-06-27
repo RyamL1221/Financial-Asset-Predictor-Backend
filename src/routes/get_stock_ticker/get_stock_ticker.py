@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, Response
-
 from src.routes.get_stock_ticker.getters import (
     get_macd, get_rsi, get_profile, get_bollinger_bands, 
     get_roic, get_eps, get_beta, get_ey
